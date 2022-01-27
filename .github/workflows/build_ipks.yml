@@ -50,9 +50,18 @@ jobs:
           
       # Runs a set of commands using the runners shell
       - name: build package
+        id: buildpackage
         run: |
           cd ..
           make package/small-package/luci-app-ssr-plus/compile V=s
+          
+      # Runs a set of commands using the runners shell
+      - name: Upload bin directory
+        uses: actions/upload-artifact@v2
+        if: steps.buildpackage.outputs.status == 'success'
+        with:
+          name: mypackage_${{ env.FILE_DATE }}
+          path: bin
           
           
           
