@@ -35,8 +35,8 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: download sdk
-        working-directory: /
         run: |
+          cd ~
           $GITHUB_WORKSPACE/$DOWNLOAD_SH ath79-1907
           cd sdk/1907/ath79/
           ./scripts/feeds update -f
