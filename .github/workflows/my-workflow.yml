@@ -45,13 +45,14 @@ jobs:
           $GITHUB_WORKSPACE/$DOWNLOAD_SH ath79-1907
           cd sdk/1907/ath79/
           ./scripts/feeds update -f
+          ./scripts/feeds install -a
           
       # Runs a set of commands using the runners shell
       - name: download package
         run: |
           cd ~
           cd sdk/1907/ath79/package
-          git clone https://github.com/kenzok8/small-package.git
+          git clone https://github.com/keanuzhang/helloworld.git
           
       # Runs a set of commands using the runners shell
       - name: build package
@@ -59,7 +60,7 @@ jobs:
         run: |
           cd ~
           cd sdk/1907/ath79
-          make package/small-package/luci-app-ssr-plus/compile V=s
+          make package/helloworld/luci-app-ssr-plus/compile V=s
           
       # Runs a set of commands using the runners shell
       - name: Upload bin directory
